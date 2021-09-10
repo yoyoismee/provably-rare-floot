@@ -1569,7 +1569,7 @@ contract Floot is ERC721Enumerable, ReentrancyGuard, Ownable {
 
     constructor() ERC721("Floot", "FLOOT") Ownable() {
         entropy = blockhash(block.number - 1);
-        standard = 1000;
+        standard = 32;
     }
 
     function logx(uint256 x) public pure returns (uint256) {
@@ -1615,9 +1615,9 @@ contract Floot is ERC721Enumerable, ReentrancyGuard, Ownable {
                 coolness(salt) < type(uint256).max / standard,
                 "Not tasty enough"
             );
+            standard = (standard * 10010) / 10000 + 1; // we wanna get better everytime!
         }
         tokenSeed[nextTokenId] = salt;
-        standard = (standard * 10100) / 10000; // we wanna get better everytime!
         _safeMint(_msgSender(), nextTokenId);
         nextTokenId += 1;
     }
