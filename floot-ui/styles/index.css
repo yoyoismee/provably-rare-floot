@@ -20,13 +20,3 @@ textarea {
   color: #9a6b6b;
   background-color: #9a6b6b29;
 }
-
-h1,
-p {
-  font-variation-settings: 'LXND' 2;
-}
-
-a,
-button {
-  cursor: pointer;
-}
