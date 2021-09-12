@@ -17,9 +17,6 @@ const Home: NextPage = () => {
       <main className={styles.main}>
         <h1 className={styles.title}>
           <span className="text-orange-500">Floot </span> is loot for recipe 
-          <span className="text-orange-700 ml-3" style={{fontSize: '44px'}}>
-            <Icon fill={faCookieBite}></Icon>
-          </span>
         </h1>
       </main>
 
