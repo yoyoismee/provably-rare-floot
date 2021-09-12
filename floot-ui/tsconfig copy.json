@@ -1,0 +1,42 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "alwaysStrict": true,
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "lib": ["dom", "es2017", "ESNext.String"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "paths": {
+      "stuff/*": ["components/stuff/*"],
+      "static": ["components/static/index"],
+      "static/*": ["components/static/*"],
+      "method/*": ["method/*"],
+      "@/*": ["components/*"]
+    },
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "esnext"
+  },
+  "exclude": ["node_modules"],
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "machine/contentState.js",
+    "machine/contentMachine.js",
+    "pages/_document.js",
+    "components/strategy",
+    "components/static",
+    "components/chart/NivoBar.jsx",
+    "pages/api/opensea/offer.js",
+    "pages/api/opensea/priceHistory.js"
+, "pages/api/foundation/nftDetail.js", "components/UploadButton.js", "components/DragContainer.tsx"  ]
+}
