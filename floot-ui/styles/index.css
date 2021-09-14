@@ -1,0 +1,22 @@
+/* purgecss start ignore */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css?family=Lexend:500,600,700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/brands.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&display=swap');
+
+body {
+  font-family: 'Lexend', 'DM Serif Display', sans-serif, serif;
+  overflow-y: auto;
+}
+
+input, 
+textarea {
+  -webkit-appearance: none;
+}
+
+.button-red {
+  color: #9a6b6b;
+  background-color: #9a6b6b29;
+}
