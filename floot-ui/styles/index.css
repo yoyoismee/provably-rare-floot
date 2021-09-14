@@ -7,8 +7,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Krona+One&display=swap');
 
 body {
-  font-family: 'Lexend', 'DM Serif Display', sans-serif, serif;
+  font-family:  sans-serif, serif;
   overflow-y: auto;
+  background-color: #FEF8ED;
+  color: #333333;
 }
 
 input, 
