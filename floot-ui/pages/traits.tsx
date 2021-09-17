@@ -16,7 +16,7 @@ const Home: NextPage = () => {
       <main className="md:w-3/5 w-5/6 m-auto flex flex-col justify-start">
         <div className="flex justify-between">
           <div className="text-4xl mb-2 font-bold">
-            <button className="w-64 p-3 border-black border-4 text-xl font-bold" onClick={() => Router.push('/')}>Back</button>
+            <button className="w-64 p-3 border-black border-4 text-xl font-bold" onClick={() => Router.push('/')}>Back Design</button>
           </div>
           <div className="text-2xl mb-2">
             <h1 className="text-4xl mb-2 font-bold">
