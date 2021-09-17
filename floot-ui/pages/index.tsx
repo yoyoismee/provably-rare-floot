@@ -43,7 +43,7 @@ const Home: NextPage = () => {
       </main>
       
       <footer className="flex flex-col justify-center mb-5">
-        <Barcode fontSize={15} height={32} width={1.3} background="#FEF8ED" value="floot" />
+        <Barcode fontSize={15} height={32} width={1.3} background="#FEF8ED" value="floot.center" />
       </footer>
 
     </div>
