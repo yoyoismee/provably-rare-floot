@@ -12,7 +12,8 @@ const Icon = ({ fill, noMargin = false }: Props) => {
   return (
     <FontAwesomeIcon
       icon={fill}
-      className={`${noMargin ? '' : 'mr-3'} fa-show`}
+      className={`${noMargin ? '' : 'mr-3'} fa-show inline`}
+      style={{ width: '28px' }}
     />
   )
 }
