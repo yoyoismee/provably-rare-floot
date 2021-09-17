@@ -1414,89 +1414,89 @@ abstract contract ERC721Enumerable is ERC721, IERC721Enumerable {
 }
 
 contract Floot is ERC721Enumerable, ReentrancyGuard, Ownable {
-    string[] private cooking = ["fried", "boiled", "baked", "grilled"];
-    string[] private carb = ["rice", "potato", "noodle", "spagetthi"];
+    string[] private cooking = ["Fried", "Boiled", "Baked", "Grilled"];
+    string[] private carb = ["Rice", "Potato", "Noodle", "Spagetthi"];
 
     string[] private drink = [
         "",
-        "milk",
-        "beer",
-        "soda",
-        "wine",
-        "cider",
-        "tea",
-        "coffee",
+        "Milk",
+        "Beer",
+        "Soda",
+        "Wine",
+        "Cider",
+        "Tea",
+        "Coffee",
         // ratest
-        "champagne"
+        "Champagne"
     ];
 
     string[] private spice = [
         "",
-        "herb",
-        "pepper",
-        "butter",
-        "cheese",
-        "percorino romano",
-        "mozzarella",
-        "thai chilli",
+        "Herb",
+        "Pepper",
+        "Butter",
+        "Cheese",
+        "Percorino Romano",
+        "Mozzarella",
+        "Thai Chilli",
         // rarest
-        "parmigiano reggiano"
+        "Parmigiano Reggiano"
     ];
 
     string[] private ingredient = [
         // veg
         ""
-        "carrot",
-        "raddish",
-        "shroom",
-        "acorn",
-        "onion",
-        "tomato",
+        "Carrot",
+        "Raddish",
+        "Shroom",
+        "Acorn",
+        "Onion",
+        "Tomato",
         // fruit
-        "bananas",
-        "apple",
-        "melon",
-        "palm fruit",
-        "volfruit",
-        "wildberry",
-        "volfruit",
-        "grape",
+        "Bananas",
+        "Apple",
+        "Melon",
+        "Palm Fruit",
+        "Volfruit",
+        "Wildberry",
+        "Volfruit",
+        "Grape",
         //beef
-        "beetle",
-        "firefly",
-        "butterfly",
-        "carp",
-        "bass",
-        "crab",
-        "porgy",
-        "salmon",
-        "trout",
-        "snail",
-        "frog",
-        "lizard",
-        "raw turkey",
-        "raw bird thigh",
-        "raw meat",
-        "raw prime meat",
-        "raw whole bird",
-        "tofu",
-        "bird egg",
-        "tree nut",
-        "seeds",
-        "bean",
-        "beef",
-        "sausage",
-        "pork belly",
-        "lamb",
-        "duck",
-        "char-siu",
-        "iberico",
+        "Beetle",
+        "Firefly",
+        "Butterfly",
+        "Carp",
+        "Bass",
+        "Crab",
+        "Porgy",
+        "Salmon",
+        "Trout",
+        "Snail",
+        "Frog",
+        "Lizard",
+        "Raw Turkey",
+        "Raw Bird Thigh",
+        "Raw Meat",
+        "Raw Prime Meat",
+        "Raw Whole Bird",
+        "Tofu",
+        "Bird Egg",
+        "Tree Nut",
+        "Seeds",
+        "Bean",
+        "Beef",
+        "Sausage",
+        "Pork Belly",
+        "Lamb",
+        "Duck",
+        "Char-siu",
+        "Iberico",
         // rare
-        "truffle",
-        "fairy",
-        "lobster",
-        "pla-ra",
-        "durian"
+        "Truffle",
+        "Fairy",
+        "Lobster",
+        "Pla-ra",
+        "Durian"
     ];
 
     string[] private namePrefixes = [
@@ -1702,7 +1702,7 @@ contract Floot is ERC721Enumerable, ReentrancyGuard, Ownable {
             return "";
         }
         if (extra) {
-            return string(abi.encodePacked(" served with ", drink[luck]));
+            return string(abi.encodePacked(" Served with ", drink[luck]));
         }
         return drink[luck];
     }
