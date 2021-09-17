@@ -25,14 +25,14 @@ const Home: NextPage = () => {
         </div>
         <span className="w-full h-3 bg-black mb-2"></span>
         <div className="mb-2 text-xl">
-          <span>Floot is randomized recipe generated and stored on chain. Ingredients, flavors, and other prefixes are intentionally added for others to interpret in a chef perspective. The more Floot create, the better crypto-chef ecosystems will be.</span>
+          <span className="mb-2">Floot is randomized recipe generated and stored on chain. Ingredients, flavors, and other prefixes are intentionally added for others to interpret in a chef perspective. The more Floot create, the better crypto-chef ecosystems will be.</span>
         </div>
         <span className="w-full h-3 bg-black mb-2"></span>
         <div className="mb-2 text-xl">
           <div className="text-2xl mb-2 font-bold">
             Uses
           </div>
-          <span>Floot is an open-source project, feel free to use Floot in more fancy ways.</span>
+          <span className="mb-2">Floot is an open-source project, feel free to use Floot in more fancy ways.</span>
         </div>
       </main>
 
