@@ -19,7 +19,7 @@ const Home: NextPage = () => {
 
       <main className="md:w-3/5 w-5/6 m-auto flex flex-col justify-start">
         <div className="flex justify-between">
-          <div className="mb-2 font-bold">
+          <div className="mb-2 font-bold flex items-center">
             <span className="text-4xl">Floot</span>
             <span className="ml-4 ">
               <Icon fill={faShoppingCart}></Icon>
