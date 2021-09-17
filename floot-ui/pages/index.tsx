@@ -1,11 +1,13 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
+// import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import Icon from '../components/Icon'
-import { faCookieBite } from '@fortawesome/free-solid-svg-icons'
+// import Icon from '../components/Icon'
+// import { faCookieBite } from '@fortawesome/free-solid-svg-icons'
+import { useRouter } from 'next/router'
 
 const Home: NextPage = () => {
+  const Router = useRouter()
   return (
     <div className={styles.container}>
       <Head>
@@ -34,11 +36,13 @@ const Home: NextPage = () => {
           </div>
           <span className="mb-2">Floot is an open-source project, feel free to use Floot in more fancy ways.</span>
         </div>
+        <div className="my-4"></div>
+        <button className="w-64 p-3 border-black m-auto inline border-4 text-xl font-bold" onClick={() => Router.push('/traits')}>Check your floot traits</button>
       </main>
 
       <footer className="flex flex-col justify-center">
         <div className="m-auto mb-4">
-          <svg xmlns="http://www.w3.org/2000/svg" x="0.0000mm" y="0.0000mm" width="47.6250mm" height="26.4580mm" viewBox="0.0000 0.0000 47.6250 26.4580" version="1.1" shape-rendering="crispEdges">
+          <svg xmlns="http://www.w3.org/2000/svg" x="0.0000mm" y="0.0000mm" width="47.6250mm" height="26.4580mm" viewBox="0.0000 0.0000 47.6250 26.4580" version="1.1" shapeRendering="crispEdges">
             <title>TBarCode - 11.12.1.16467</title>
             <desc>BarCode licensed to MEM:TEC-IT Datenverarbeitung GmbH Internal License</desc>
             <g fill="rgb(0%,0%,0%)">
@@ -76,7 +80,7 @@ const Home: NextPage = () => {
               <rect x="46.5667" y="0.0000" width="1.0583" height="20.1864" />
             </g>
             <g fill="rgb(0%,0%,0%)">
-              <text x="23.8125" y="25.2821" transform="rotate(360 23.8125,25.2821)" text-anchor="middle" font-family="Arial" font-size="5.6444">floot</text>
+              <text x="23.8125" y="25.2821" transform="rotate(360 23.8125,25.2821)" textAnchor="middle" fontFamily="Arial" fontSize="5.6444">floot</text>
             </g>
           </svg>
         </div>

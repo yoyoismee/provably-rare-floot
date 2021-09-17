@@ -1,8 +1,10 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
+  const Router = useRouter()
   return (
     <div className={styles.container}>
       <Head>
@@ -15,6 +17,7 @@ const Home: NextPage = () => {
         <h1 className={styles.title}>
           This is traits pages
         </h1>
+        <button className="w-64 p-3 border-black m-auto inline border-4 text-xl font-bold" onClick={() => Router.push('/')}>Back Home</button>
       </main>
     </div>
   )
