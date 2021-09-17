@@ -1,9 +1,8 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-// import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-// import Icon from '../components/Icon'
-// import { faCookieBite } from '@fortawesome/free-solid-svg-icons'
+import Icon from '../components/Icon'
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import { useRouter } from 'next/router'
 
 const Barcode = require('react-barcode');
@@ -22,6 +21,9 @@ const Home: NextPage = () => {
         <div className="flex justify-between">
           <div className="text-4xl mb-2 font-bold">
             Floot
+            <span className="ml-4 text-3xl">
+              <Icon fill={faShoppingCart}></Icon>
+            </span>
           </div>
           <div className="text-2xl mb-2">
             <a className="underline font-bold">Rarity</a>
