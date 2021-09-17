@@ -13,7 +13,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="md:w-3/5 w-5/6 m-auto flex flex-col justify-start">
+      <main className="w-full m-auto flex flex-col justify-start mt-2">
         <div className="flex justify-between">
           <div className="text-4xl mb-2 font-bold">
             <button className="w-64 p-3 border-black border-4 text-xl font-bold" onClick={() => Router.push('/')}>Back Design</button>
@@ -24,7 +24,17 @@ const Home: NextPage = () => {
             </h1>
           </div>
         </div>
+        <span className="w-full h-3 bg-black mb-2"></span>
       </main>
+      <div className="grid-cols-3 grid w-full">
+        <img src="https://portlandenglish.edu/wp-content/uploads/2015/02/500x5001.gif" className="mx-2 my-2" />
+        <img src="https://portlandenglish.edu/wp-content/uploads/2015/02/500x5001.gif" className="mx-2 my-2" />
+        <img src="https://portlandenglish.edu/wp-content/uploads/2015/02/500x5001.gif" className="mx-2 my-2" />
+        <img src="https://portlandenglish.edu/wp-content/uploads/2015/02/500x5001.gif" className="mx-2 my-2" />
+        <img src="https://portlandenglish.edu/wp-content/uploads/2015/02/500x5001.gif" className="mx-2 my-2" />
+        <img src="https://portlandenglish.edu/wp-content/uploads/2015/02/500x5001.gif" className="mx-2 my-2" />
+        <img src="https://portlandenglish.edu/wp-content/uploads/2015/02/500x5001.gif" className="mx-2 my-2" />
+      </div>
     </div>
   )
 }
