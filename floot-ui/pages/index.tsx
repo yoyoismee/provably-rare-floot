@@ -39,7 +39,7 @@ const Home: NextPage = () => {
           <span className="mb-2">Floot is an open-source project, feel free to use Floot in more fancy ways.</span>
         </div>
         <div className="my-4"></div>
-        <button className="w-64 p-3 border-black m-auto inline border-4 text-xl font-bold" onClick={() => Router.push('/traits')}>Check your floot traits</button>
+        <button className="w-64 p-3 border-black m-auto inline border-4 text-xl font-bold" onClick={() => Router.push('/traits')}>See Traits</button>
       </main>
       
       <footer className="flex flex-col justify-center mb-5">
