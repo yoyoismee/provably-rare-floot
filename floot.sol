@@ -1414,8 +1414,8 @@ abstract contract ERC721Enumerable is ERC721, IERC721Enumerable {
 }
 
 contract Floot is ERC721Enumerable, ReentrancyGuard, Ownable {
-    string[] private cooking = ["Fried", "Boiled", "Baked", "Grilled"];
-    string[] private carb = ["Rice", "Potato", "Noodle", "Spagetthi"];
+    string[] private cooking = ["fried", "boiled", "baked", "grilled"];
+    string[] private carb = ["rice", "potato", "noodle", "spagetthi"];
 
     string[] private drink = [
         "",
@@ -1436,11 +1436,11 @@ contract Floot is ERC721Enumerable, ReentrancyGuard, Ownable {
         "Pepper",
         "Butter",
         "Cheese",
-        "Percorino Romano",
+        "Percorino romano",
         "Mozzarella",
-        "Thai Chilli",
+        "Thai chilli",
         // rarest
-        "Parmigiano Reggiano"
+        "Parmigiano reggiano"
     ];
 
     string[] private ingredient = [
@@ -1456,7 +1456,7 @@ contract Floot is ERC721Enumerable, ReentrancyGuard, Ownable {
         "Bananas",
         "Apple",
         "Melon",
-        "Palm Fruit",
+        "Palm fruit",
         "Volfruit",
         "Wildberry",
         "Volfruit",
@@ -1474,19 +1474,19 @@ contract Floot is ERC721Enumerable, ReentrancyGuard, Ownable {
         "Snail",
         "Frog",
         "Lizard",
-        "Raw Turkey",
-        "Raw Bird Thigh",
-        "Raw Meat",
-        "Raw Prime Meat",
-        "Raw Whole Bird",
+        "Raw turkey",
+        "Raw bird thigh",
+        "Raw meat",
+        "Raw prime meat",
+        "Raw whole bird",
         "Tofu",
-        "Bird Egg",
-        "Tree Nut",
+        "Bird egg",
+        "Tree nut",
         "Seeds",
         "Bean",
         "Beef",
         "Sausage",
-        "Pork Belly",
+        "Pork belly",
         "Lamb",
         "Duck",
         "Char-siu",
@@ -1511,6 +1511,7 @@ contract Floot is ERC721Enumerable, ReentrancyGuard, Ownable {
         "Rooten ",
         "Rich ",
         "Umami ",
+        // rare
         "Ancient ",
         "Hylis ",
         "Protis ",
@@ -1562,15 +1563,12 @@ contract Floot is ERC721Enumerable, ReentrancyGuard, Ownable {
         " of Artillery"
     ];
 
-    bytes32 public entropy;
     uint256 public standard;
     uint256 nextTokenId = 0;
-    mapping(uint256 => uint256) private tokenSeed;
+    mapping(uint256 => bytes) private tokenSeed;
+    uint256 maxToken = 8000;
 
-    constructor() ERC721("Floot", "FLOOT") Ownable() {
-        entropy = blockhash(block.number - 1);
-        standard = 32;
-    }
+    constructor() ERC721("Floot", "FLOOT") Ownable() {}
 
     function logx(uint256 x) public pure returns (uint256) {
         uint256 n = 0;
@@ -1609,24 +1607,20 @@ contract Floot is ERC721Enumerable, ReentrancyGuard, Ownable {
         return n;
     }
 
-    function cook(uint256 salt) public nonReentrant {
-        if (nextTokenId > 3000) {
-            require(
-                coolness(salt) < type(uint256).max / standard,
-                "Not tasty enough"
-            );
-            standard = (standard * 10010) / 10000 + 1; // we wanna get better everytime!
-        }
-        tokenSeed[nextTokenId] = salt;
+    function cook() public nonReentrant {
+        require(nextTokenId < maxToken + 1, "out of ingredient");
+        tokenSeed[nextTokenId] = abi.encodePacked(
+            blockhash(block.number - 1),
+            toString(nextTokenId)
+        );
+
         _safeMint(_msgSender(), nextTokenId);
         nextTokenId += 1;
     }
 
     /// @dev Returns your coolnest, lower = better (modify from loot gem luck)
-    function coolness(uint256 salt) public view returns (uint256) {
-        require(entropy != bytes32(0), "no entropy");
-        bytes memory data = abi.encodePacked(entropy, salt);
-        return uint256(keccak256(data));
+    function coolness(uint256 tokenID) public view returns (uint256) {
+        return uint256(keccak256(tokenSeed[tokenID])) % 100;
     }
 
     function random(string memory input) internal pure returns (uint256) {
@@ -1634,37 +1628,35 @@ contract Floot is ERC721Enumerable, ReentrancyGuard, Ownable {
     }
 
     function getP0(uint256 tokenID) public view returns (string memory) {
-        uint256 score = type(uint256).max / coolness(tokenSeed[tokenID]);
-        return namePrefixes[magicLuck(score, 4, namePrefixes.length, 3)];
+        uint256 noption = namePrefixes.length;
+        return namePrefixes[magicLuck("P0", tokenID, 10, 5, 30, noption - 30)];
     }
 
     function getCooking(uint256 tokenID) public view returns (string memory) {
-        uint256 score = type(uint256).max / coolness(tokenSeed[tokenID]);
-        return cooking[magicLuck(score, 0, cooking.length, 1)];
+        uint256 noption = cooking.length;
+        return cooking[magicLuck("Cook", tokenID, 0, 0, 0, noption)];
     }
 
     function getCarb(uint256 tokenID) public view returns (string memory) {
-        uint256 score = type(uint256).max / coolness(tokenSeed[tokenID]);
-        return carb[magicLuck(score, 0, carb.length, 1)];
+        uint256 noption = carb.length;
+        return carb[magicLuck("carb", tokenID, 0, 0, 0, noption)];
     }
 
     function getP1(uint256 tokenID) public view returns (string memory) {
-        uint256 score = type(uint256).max / coolness(tokenSeed[tokenID]);
-        return namePrefixes[magicLuck(score, 2, namePrefixes.length, 3)];
+        uint256 noption = namePrefixes.length;
+        return namePrefixes[magicLuck("P1", tokenID, 20, 5, 30, noption - 30)];
     }
 
     function getI1(uint256 tokenID) public view returns (string memory) {
-        uint256 score = type(uint256).max / coolness(tokenSeed[tokenID]);
-        uint256 luck = magicLuck(score, 0, ingredient.length, 1);
-        if (luck == 0) {
-            luck = 1;
-        }
+        uint256 noption = ingredient.length;
+        uint256 luck = magicLuck("I1", tokenID, 0, 5, 5, noption - 5);
+
         return string(abi.encodePacked(getP1(tokenID), ingredient[luck]));
     }
 
     function getP2(uint256 tokenID) public view returns (string memory) {
-        uint256 score = type(uint256).max / coolness(tokenSeed[tokenID]);
-        return namePrefixes[magicLuck(score, 32, namePrefixes.length, 3)];
+        uint256 noption = namePrefixes.length;
+        return namePrefixes[magicLuck("P2", tokenID, 60, 5, 30, noption - 30)];
     }
 
     function getI2(uint256 tokenID, bool extra)
@@ -1672,8 +1664,9 @@ contract Floot is ERC721Enumerable, ReentrancyGuard, Ownable {
         view
         returns (string memory)
     {
-        uint256 score = type(uint256).max / coolness(tokenSeed[tokenID]);
-        uint256 luck = magicLuck(score, 24, ingredient.length, 1);
+        uint256 noption = ingredient.length;
+        uint256 luck = magicLuck("I1", tokenID, 40, 5, 5, noption - 5);
+
         if (luck == 0) {
             return "";
         }
@@ -1687,8 +1680,8 @@ contract Floot is ERC721Enumerable, ReentrancyGuard, Ownable {
     }
 
     function getSP(uint256 tokenID) public view returns (string memory) {
-        uint256 score = type(uint256).max / coolness(tokenSeed[tokenID]);
-        return spice[magicLuck(score, 8, spice.length, 4)];
+        uint256 noption = spice.length;
+        return spice[magicLuck("PP", tokenID, 30, 5, 1, noption - 1)];
     }
 
     function getD(uint256 tokenID, bool extra)
@@ -1696,39 +1689,47 @@ contract Floot is ERC721Enumerable, ReentrancyGuard, Ownable {
         view
         returns (string memory)
     {
-        uint256 score = type(uint256).max / coolness(tokenSeed[tokenID]);
-        uint256 luck = magicLuck(score, 16, drink.length, 1);
+        uint256 noption = drink.length;
+        uint256 luck = magicLuck("Drink", tokenID, 40, 5, 1, noption - 1);
+
         if (luck == 0) {
             return "";
         }
         if (extra) {
-            return string(abi.encodePacked(" Served with ", drink[luck]));
+            return string(abi.encodePacked(" served with ", drink[luck]));
         }
         return drink[luck];
     }
 
     function getS(uint256 tokenID) public view returns (string memory) {
-        uint256 score = type(uint256).max / coolness(tokenSeed[tokenID]);
-        return suffixes[magicLuck(score, 6, suffixes.length, 2)];
+        uint256 noption = suffixes.length;
+        return suffixes[magicLuck("Suf", tokenID, 30, 0, 0, noption)];
     }
 
     function price(uint256 tokenID) public view returns (uint256) {
-        uint256 score = type(uint256).max / coolness(tokenSeed[tokenID]);
-        return logx(score);
+        return coolness(tokenID);
     }
 
     function magicLuck(
-        uint256 score,
+        string memory key,
+        uint256 tokenID,
         uint256 minS,
-        uint256 nOpt,
-        uint256 invProb
-    ) public pure returns (uint256 opt) {
-        score >>= minS;
-        score %= nOpt * invProb;
-        if ((score % invProb) > 0) {
+        uint256 rareP,
+        uint256 rareOpt,
+        uint256 simpleOpt
+    ) public view returns (uint256 opt) {
+        uint256 score = coolness(tokenID);
+        if (score < minS) {
             return 0;
         }
-        return score / invProb;
+        uint256 partLuck = random(
+            string(abi.encodePacked(key, toString(tokenID)))
+        );
+        if (partLuck % 100 < rareP) {
+            return (partLuck % rareOpt) + simpleOpt;
+        } else {
+            return (partLuck % (simpleOpt - 1)) + 1;
+        }
     }
 
     function tokenURI(uint256 tokenID)
@@ -1826,9 +1827,9 @@ contract Floot is ERC721Enumerable, ReentrancyGuard, Ownable {
             bytes(
                 string(
                     abi.encodePacked(
-                        '{"name": "Bag #',
+                        '{"name": "Floot #',
                         toString(tokenID),
-                        '", "description": "Loot is randomized adventurer gear generated and stored on chain. Stats, images, and other functionality are intentionally omitted for others to interpret. Feel free to use Loot in any way you want.", "image": "data:image/svg+xml;base64,',
+                        '", "description": "Floot is randomized recipe generated and stored on chain. Ingredients, flavors, and other prefixes are intentionally added for others to interpret in a chef perspective. The more floot create, the better crypto-chef ecosystems will be.Floot is an open-source project, feel free to use floot in more fancy ways.", "image": "data:image/svg+xml;base64,',
                         Base64.encode(bytes(output)),
                         '"}'
                     )
