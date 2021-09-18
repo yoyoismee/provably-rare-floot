@@ -1414,8 +1414,8 @@ abstract contract ERC721Enumerable is ERC721, IERC721Enumerable {
 }
 
 contract Floot is ERC721Enumerable, ReentrancyGuard, Ownable {
-    string[] private cooking = ["fried", "boiled", "baked", "grilled"];
-    string[] private carb = ["rice", "potato", "noodle", "spagetthi"];
+    string[] private cooking = ["Fried", "Boiled", "Baked", "Grilled"];
+    string[] private carb = ["Rice", "Potato", "Noodle", "Spagetthi"];
 
     string[] private drink = [
         "",
@@ -1436,11 +1436,11 @@ contract Floot is ERC721Enumerable, ReentrancyGuard, Ownable {
         "Pepper",
         "Butter",
         "Cheese",
-        "Percorino romano",
+        "Percorino Romano",
         "Mozzarella",
         "Thai chilli",
         // rarest
-        "Parmigiano reggiano"
+        "Parmigiano Reggiano"
     ];
 
     string[] private ingredient = [
@@ -1474,28 +1474,28 @@ contract Floot is ERC721Enumerable, ReentrancyGuard, Ownable {
         "Snail",
         "Frog",
         "Lizard",
-        "Raw turkey",
-        "Raw bird thigh",
-        "Raw meat",
-        "Raw prime meat",
-        "Raw whole bird",
+        "Raw Turkey",
+        "Raw Bird Thigh",
+        "Raw Meat",
+        "Raw Prime Meat",
+        "Raw Whole Bird",
         "Tofu",
-        "Bird egg",
-        "Tree nut",
+        "Bird Egg",
+        "Tree Nut",
         "Seeds",
         "Bean",
         "Beef",
         "Sausage",
-        "Pork belly",
+        "Pork Belly",
         "Lamb",
         "Duck",
-        "Char-siu",
+        "Char-Siu",
         "Iberico",
         // rare
         "Truffle",
         "Fairy",
         "Lobster",
-        "Pla-ra",
+        "Pla-Ra",
         "Durian"
     ];
 
