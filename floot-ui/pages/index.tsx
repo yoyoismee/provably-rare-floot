@@ -78,7 +78,6 @@ const Home: NextPage = () => {
 
       <div className="w-screen flex flex-col items-center">
         <div className="md:w-3/5 w-5/6 ">
-
           <div className="w-full h-3 mt-2 bg-black mb-2"></div>
           <h3 className="text-2xl font-bold mb-5">Traits</h3>
           <div className="grid xl:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6">
