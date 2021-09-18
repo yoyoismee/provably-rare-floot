@@ -1,15 +1,35 @@
 import type { NextPage } from 'next'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
 import Head from 'next/head'
 import Icon from '../components/Icon'
-import FlootCard from '../components/FlootCard'
-import { lists } from '../static/flootLists'
+import Floot from '../components/Floot'
+import { FlootNFT } from '../Interface/metadata'
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import { useRouter } from 'next/router'
+
+// import { lists } from '../static/flootLists'
+// import FlootCard from '../components/FlootCard'
 
 const Barcode = require('react-barcode');
 
 const Home: NextPage = () => {
   const Router = useRouter()
+  const [ NFTs, setNFT ] =  useState<FlootNFT[]>([])
+  useEffect(() => {
+    (async () => {
+      const chain = 'rinkeby'
+      const flootCollection = '0x7e43465eb6a826329b30eee75f866e89abdad37a'
+      const resp = await axios(`/api/fetch?address=${flootCollection}&chain=${chain}`)
+      if(resp.status == 200){
+        if(resp.data.result.length > 0){
+          const lists: FlootNFT[] = resp.data.result
+          setNFT(lists)
+        }
+      }
+    })()
+  }, []);
+
   return (
     <div>
       <Head>
@@ -53,13 +73,14 @@ const Home: NextPage = () => {
           <h3 className="text-3xl font-bold">Traits</h3>
           <div className="w-full h-3 mt-2 bg-black mb-2"></div>
           <div className="grid xl:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6">
-            { lists.map(({ price, howTo, ingredient, flootId }, index) => 
+            { NFTs.map((nft,idx) => <Floot nft={nft} key={idx} />   ) }
+            {/* { lists.map(({ price, howTo, ingredient, flootId }, index) => 
               <FlootCard 
                 key={index}
                 price={price} 
                 howTo={howTo}
                 ingredient={ingredient}
-                flootId={flootId} /> ) }
+                flootId={flootId} /> ) } */}
           </div>
         </div>
       </div>
