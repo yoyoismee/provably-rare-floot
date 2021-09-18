@@ -18,52 +18,61 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="w-screen flex flex-col items-center justify-center" style={{ height: '84vh' }}>
+      <div className="w-screen flex flex-col items-center justify-center" style={{ height: 'auto' }}>
         <main className="md:w-3/5 w-5/6 flex flex-grow flex-col justify-center">
-          <div className="flex-grow"></div>
-          <div className="flex justify-between">
+
+          <div className="flex justify-between items-center">
             <div className="mb-2 font-bold flex items-center">
-              <span className="text-4xl">Floot</span>
-              <span className="ml-4 ">
+              <span className="">
                 <Icon fill={faShoppingCart}></Icon>
               </span>
+              <span className="text-4xl">Floot</span>
             </div>
             <div className="text-2xl mb-2">
-              <a className="underline font-bold">Rarity</a>
+              <a className="p-4" href="https://twitter.com/flootcenter">
+                <img src="twitter_logo.png" style={{ height: '20px', width: '20px' }} className="inline-block" />
+              </a>
+              <a className="p-4" href="https://github.com/yoyoismee/provably-rare-floot">
+                <img src="github_logo.png" style={{ height: '20px', width: '20px' }} className="inline-block" />
+              </a>
             </div>
           </div>
           <span className="w-full h-3 bg-black mb-2"></span>
-          <div className="mb-2 text-xl">
-            <span className="mb-2">Floot is randomized recipe generated and stored on chain. Ingredients, flavors, and other prefixes are intentionally added for others to interpret in a chef perspective. The more Floot create, the better crypto-chef ecosystems will be.</span>
+          <h3 className="text-2xl font-bold mb-2">About</h3>
+          <div className="mb-4 text-xl">
+            <span className="">Floot is randomized recipe generated and stored on chain. Ingredients, flavors, and other prefixes are intentionally added for others to interpret in a chef perspective. The more Floot create, the better crypto-chef ecosystems will be.</span>
           </div>
           <span className="w-full h-3 bg-black mb-2"></span>
           <div className="mb-2 text-xl">
             <div className="text-2xl mb-2 font-bold">
               Uses
             </div>
-            <span className="mb-2">Floot is an open-source project, feel free to use Floot in more fancy ways.</span>
+            <div className="mb-4 text-xl">
+              <span className="mb-4">Floot is an open-source project, feel free to use Floot in more fancy ways.</span>
+            </div>
           </div>
-          <button className="mt-16 w-64 p-3 border-black m-auto inline border-4 text-xl font-bold" onClick={() => Router.push('/traits')}>See Traits</button>
-          <div className="flex-grow"></div>
+          <button className="mt-16 w-64 p-3 border-black m-auto inline border-4 text-xl font-bold hidden" onClick={() => Router.push('/traits')}>See Traits</button>
+
         </main>
       </div>
 
       <div className="w-screen flex flex-col items-center">
         <div className="md:w-3/5 w-5/6 ">
-          <h3 className="text-3xl font-bold">Traits</h3>
+
           <div className="w-full h-3 mt-2 bg-black mb-2"></div>
+          <h3 className="text-2xl font-bold mb-5">Traits</h3>
           <div className="grid xl:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6">
-            { lists.map(({ price, howTo, ingredient, flootId }, index) => 
-              <FlootCard 
+            {lists.map(({ price, howTo, ingredient, flootId }, index) =>
+              <FlootCard
                 key={index}
-                price={price} 
+                price={price}
                 howTo={howTo}
                 ingredient={ingredient}
-                flootId={flootId} /> ) }
+                flootId={flootId} />)}
           </div>
         </div>
       </div>
-      <footer className="w-screen mt-16 flex flex-col items-center justify-center mb-5" style={{ height: '8vh'}}>  
+      <footer className="w-screen mt-16 flex flex-col items-center justify-center mb-5" style={{ height: '8vh' }}>
         <Barcode fontSize={15} height={32} width={1.3} background="#FEF8ED" value="floot.center" />
       </footer>
 
