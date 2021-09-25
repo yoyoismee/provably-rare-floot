@@ -15,10 +15,10 @@ const getFlootLists = async (
   address: string, 
   chain:string='eth',
   format:string='decimal',
-  order:string='DESC',
+  order:string='token_id.DESC',
   limit:number=50
   ): Promise<any> => {
-  const resp = await axios(`${MORALIS_API}/nft/${address}?chain=${chain}&format=${format}&order=${order}&limit=${limit}`,options)
+  const resp = await axios(`${MORALIS_API}/nft/${address}/owners?chain=${chain}&format=${format}&order=${order}&limit=${limit}`,options)  
   if(resp.status == 200){
     return resp.data
   }else{
