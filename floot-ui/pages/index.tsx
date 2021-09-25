@@ -18,8 +18,8 @@ const Home: NextPage = () => {
   const [ NFTs, setNFT ] =  useState<FlootNFT[]>([])
   useEffect(() => {
     (async () => {
-      const chain = 'rinkeby'
-      const flootCollection = '0x7e43465eb6a826329b30eee75f866e89abdad37a'
+      const chain = 'rinkeby' // 'eth'
+      const flootCollection = '0x7e43465eb6a826329b30eee75f866e89abdad37a' // 'real collection address'
       const resp = await axios(`/api/fetch?address=${flootCollection}&chain=${chain}`)
       if(resp.status == 200){
         if(resp.data.result.length > 0){
