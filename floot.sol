@@ -1702,7 +1702,7 @@ contract Floot is ERC721Enumerable, ReentrancyGuard, Ownable {
         returns (string memory)
     {
         uint256 noption = ingredient.length;
-        uint256 luck = magicLuck("I1", tokenID, 40, 5, 5, noption - 5);
+        uint256 luck = magicLuck("I2", tokenID, 40, 5, 5, noption - 5);
 
         if (luck == 0) {
             return "";
