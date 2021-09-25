@@ -1784,7 +1784,7 @@ contract Floot is ERC721Enumerable, ReentrancyGuard, Ownable {
 
         parts[
             2
-        ] = '</text> <path d="M19 44H331" stroke="black" stroke-dasharray="2 2"/> <path d="M19 111H331" stroke="black" stroke-dasharray="2 2"/> <path d="M19 298H331" stroke="black" stroke-dasharray="2 2"/> <path d="M205 310H145V343H205V310Z" fill="#FEF8ED"/> <path d="M146.333 310H145V335.178H146.333V310Z" fill="black"/> <foreignObject x="28" y="42" width="300" class="text" height="50"><p xmlns="http://www.w3.org/1999/xhtml">';
+        ] = '</text> <path d="M19 44H331" stroke="black" stroke-dasharray="2 2"/> <path d="M19 111H331" stroke="black" stroke-dasharray="2 2"/> <path d="M19 298H331" stroke="black" stroke-dasharray="2 2"/> <path d="M205 310H145V343H205V310Z" fill="#FEF8ED"/> <path d="M146.333 310H145V335.178H146.333V310Z" fill="black"/> <foreignObject x="28" y="42" width="300" class="text" height="80"><p xmlns="http://www.w3.org/1999/xhtml">';
 
         parts[3] = string(
             abi.encodePacked(
