@@ -1413,6 +1413,10 @@ abstract contract ERC721Enumerable is ERC721, IERC721Enumerable {
     }
 }
 
+contract ProxyRegistry {
+    mapping(address => address) public proxies;
+}
+
 contract Floot is ERC721Enumerable, ReentrancyGuard, Ownable {
     string[] private cooking = ["Fried", "Boiled", "Baked", "Grilled"];
     string[] private carb = ["Rice", "Potato", "Noodle", "Spagetthi"];
@@ -1567,8 +1571,41 @@ contract Floot is ERC721Enumerable, ReentrancyGuard, Ownable {
     uint256 nextTokenId = 0;
     mapping(uint256 => bytes) private tokenSeed;
     uint256 maxToken = 8000;
+    string private _contractURI =
+        "https://storageapi.fleek.co/yoyoismee-team-bucket/floot/floot";
 
     constructor() ERC721("Floot", "FLOOT") Ownable() {}
+
+    function setContractURI(string memory newContractURI) external onlyOwner {
+        _contractURI = newContractURI;
+    }
+
+    function contractURI() external view returns (string memory) {
+        return _contractURI;
+    }
+
+    /**
+     * Override isApprovedForAll to whitelist user's OpenSea proxy accounts to enable gas-less listings.
+     */
+    function isApprovedForAll(address owner, address operator)
+        public
+        view
+        override(ERC721)
+        returns (bool)
+    {
+        ProxyRegistry proxyRegistry = ProxyRegistry(
+            0xF57B2c51dED3A29e6891aba85459d600256Cf317
+        ); // test net
+        // ProxyRegistry proxyRegistry = ProxyRegistry(
+        //     "0xa5409ec958C83C3f309868babACA7c86DCB077c1"
+        // ); // main net
+
+        // Whitelist OpenSea proxy contract for easy trading.
+        if (proxyRegistry.proxies(owner) == operator) {
+            return true;
+        }
+        return super.isApprovedForAll(owner, operator);
+    }
 
     function logx(uint256 x) public pure returns (uint256) {
         uint256 n = 0;
@@ -1796,7 +1833,7 @@ contract Floot is ERC721Enumerable, ReentrancyGuard, Ownable {
 
         parts[
             14
-        ] = '</p></foreignObject> <path d="M164.333 310H163.667V335.178H164.333V310Z" fill="black"/> <path d="M167.667 310H167V335.178H167.667V310Z" fill="black"/> <path d="M172.333 310H169.667V335.178H172.333V310Z" fill="black"/> <path d="M173.667 310H173V335.178H173.667V310Z" fill="black"/> <path d="M175 310H174.333V335.178H175V310Z" fill="black"/> <path d="M179.667 310H177V335.178H179.667V310Z" fill="black"/> <path d="M181 310H180.333V335.178H181V310Z" fill="black"/> <path d="M182.333 310H181.667V335.178H182.333V310Z" fill="black"/> <path d="M186.333 310H183.667V335.178H186.333V310Z" fill="black"/> <path d="M187.667 310H187V335.178H187.667V310Z" fill="black"/> <path d="M189.667 310H189V335.178H189.667V310Z" fill="black"/> <path d="M191 310H190.333V335.178H191V310Z" fill="black"/> <path d="M193.667 310H192.333V335.178H193.667V310Z" fill="black"/> <path d="M197.667 310H196.333V335.178H197.667V310Z" fill="black"/> <path d="M201.667 310H199.667V335.178H201.667V310Z" fill="black"/> <path d="M203 310H202.333V335.178H203V310Z" fill="black"/> <path d="M205 310H203.667V335.178H205V310Z" fill="black"/> <text x="166" y="343" class="small">floot</text>   <text x="296" y="343" class="desc">Baked in Fantom</text> </svg>';
+        ] = '</p></foreignObject> <path d="M164.333 310H163.667V335.178H164.333V310Z" fill="black"/> <path d="M167.667 310H167V335.178H167.667V310Z" fill="black"/> <path d="M172.333 310H169.667V335.178H172.333V310Z" fill="black"/> <path d="M173.667 310H173V335.178H173.667V310Z" fill="black"/> <path d="M175 310H174.333V335.178H175V310Z" fill="black"/> <path d="M179.667 310H177V335.178H179.667V310Z" fill="black"/> <path d="M181 310H180.333V335.178H181V310Z" fill="black"/> <path d="M182.333 310H181.667V335.178H182.333V310Z" fill="black"/> <path d="M186.333 310H183.667V335.178H186.333V310Z" fill="black"/> <path d="M187.667 310H187V335.178H187.667V310Z" fill="black"/> <path d="M189.667 310H189V335.178H189.667V310Z" fill="black"/> <path d="M191 310H190.333V335.178H191V310Z" fill="black"/> <path d="M193.667 310H192.333V335.178H193.667V310Z" fill="black"/> <path d="M197.667 310H196.333V335.178H197.667V310Z" fill="black"/> <path d="M201.667 310H199.667V335.178H201.667V310Z" fill="black"/> <path d="M203 310H202.333V335.178H203V310Z" fill="black"/> <path d="M205 310H203.667V335.178H205V310Z" fill="black"/> <text x="166" y="343" class="small">floot</text></svg>';
 
         string memory output = string(
             abi.encodePacked(
