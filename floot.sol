@@ -1784,7 +1784,7 @@ contract Floot is ERC721Enumerable, ReentrancyGuard, Ownable {
 
         parts[
             2
-        ] = '</text> <path d="M19 44H331" stroke="black" stroke-dasharray="2 2"/> <path d="M19 100H331" stroke="black" stroke-dasharray="2 2"/> <path d="M19 298H331" stroke="black" stroke-dasharray="2 2"/> <path d="M205 310H145V343H205V310Z" fill="#FEF8ED"/> <path d="M146.333 310H145V335.178H146.333V310Z" fill="black"/> <foreignObject x="28" y="42" width="300" class="text" height="50"><p xmlns="http://www.w3.org/1999/xhtml">';
+        ] = '</text> <path d="M19 44H331" stroke="black" stroke-dasharray="2 2"/> <path d="M19 111H331" stroke="black" stroke-dasharray="2 2"/> <path d="M19 298H331" stroke="black" stroke-dasharray="2 2"/> <path d="M205 310H145V343H205V310Z" fill="#FEF8ED"/> <path d="M146.333 310H145V335.178H146.333V310Z" fill="black"/> <foreignObject x="28" y="42" width="300" class="text" height="50"><p xmlns="http://www.w3.org/1999/xhtml">';
 
         parts[3] = string(
             abi.encodePacked(
@@ -1803,31 +1803,31 @@ contract Floot is ERC721Enumerable, ReentrancyGuard, Ownable {
 
         parts[
             4
-        ] = '</p></foreignObject> <path d="M147.667 310H147V335.178H147.667V310Z" fill="black"/> <path d="M149.667 310H149V335.178H149.667V310Z" fill="black"/> <path d="M153 310H152.333V335.178H153V310Z" fill="black"/> <path d="M155 310H153.667V335.178H155V310Z" fill="black"/> <path d="M158.333 310H157.667V335.178H158.333V310Z" fill="black"/> <path d="M161 310H159.667V335.178H161V310Z" fill="black"/> <path d="M163 310H162.333V335.178H163V310Z" fill="black"/> <foreignObject x="27" y="100" width="275" class="textdesc" height="60"><p xmlns="http://www.w3.org/1999/xhtml">';
+        ] = '</p></foreignObject> <path d="M147.667 310H147V335.178H147.667V310Z" fill="black"/> <path d="M149.667 310H149V335.178H149.667V310Z" fill="black"/> <path d="M153 310H152.333V335.178H153V310Z" fill="black"/> <path d="M155 310H153.667V335.178H155V310Z" fill="black"/> <path d="M158.333 310H157.667V335.178H158.333V310Z" fill="black"/> <path d="M161 310H159.667V335.178H161V310Z" fill="black"/> <path d="M163 310H162.333V335.178H163V310Z" fill="black"/> <foreignObject x="27" y="120" width="275" class="textdesc" height="60"><p xmlns="http://www.w3.org/1999/xhtml">';
 
         parts[5] = getCarb(tokenID);
 
         parts[
             6
-        ] = ' </p></foreignObject> <foreignObject x="27" y="129" width="275" class="textdesc" height="60"><p xmlns="http://www.w3.org/1999/xhtml">';
+        ] = ' </p></foreignObject> <foreignObject x="27" y="149" width="275" class="textdesc" height="60"><p xmlns="http://www.w3.org/1999/xhtml">';
 
         parts[7] = getI1(tokenID);
 
         parts[
             8
-        ] = '</p></foreignObject> <foreignObject x="27" y="159" width="275" class="textdesc" height="60"><p xmlns="http://www.w3.org/1999/xhtml">';
+        ] = '</p></foreignObject> <foreignObject x="27" y="179" width="275" class="textdesc" height="60"><p xmlns="http://www.w3.org/1999/xhtml">';
 
         parts[9] = getI2(tokenID, false);
 
         parts[
             10
-        ] = '</p></foreignObject> <foreignObject x="27" y="190" width="275" class="textdesc" height="60"><p xmlns="http://www.w3.org/1999/xhtml">';
+        ] = '</p></foreignObject> <foreignObject x="27" y="210" width="275" class="textdesc" height="60"><p xmlns="http://www.w3.org/1999/xhtml">';
 
         parts[11] = getSP(tokenID);
 
         parts[
             12
-        ] = '</p></foreignObject> <foreignObject x="27" y="222" width="275" class="textdesc" height="30"><p xmlns="http://www.w3.org/1999/xhtml">';
+        ] = '</p></foreignObject> <foreignObject x="27" y="242" width="275" class="textdesc" height="30"><p xmlns="http://www.w3.org/1999/xhtml">';
 
         parts[13] = getD(tokenID, false);
 
