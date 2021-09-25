@@ -82,7 +82,7 @@ const Home: NextPage = () => {
           <div className="w-full h-3 mt-2 bg-black mb-2"></div>
           <h3 className="text-2xl font-bold mb-5">Traits</h3>
           <div className="grid xl:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6">
-            {NFTs.map((nft, idx) => <Floot nft={nft} key={idx} />)}
+            {NFTs.map((nft, idx) =>  nft.token_uri != undefined && <Floot nft={nft} key={idx} />)}
             {/* { lists.map(({ price, howTo, ingredient, flootId }, index) => 
               <FlootCard 
                 key={index}
