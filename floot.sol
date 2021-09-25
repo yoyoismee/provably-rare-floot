@@ -1413,6 +1413,10 @@ abstract contract ERC721Enumerable is ERC721, IERC721Enumerable {
     }
 }
 
+contract ProxyRegistry {
+    mapping(address => address) public proxies;
+}
+
 contract Floot is ERC721Enumerable, ReentrancyGuard, Ownable {
     string[] private cooking = ["Fried", "Boiled", "Baked", "Grilled"];
     string[] private carb = ["Rice", "Potato", "Noodle", "Spagetthi"];
@@ -1567,8 +1571,41 @@ contract Floot is ERC721Enumerable, ReentrancyGuard, Ownable {
     uint256 nextTokenId = 0;
     mapping(uint256 => bytes) private tokenSeed;
     uint256 maxToken = 8000;
+    string private _contractURI =
+        "https://storageapi.fleek.co/yoyoismee-team-bucket/floot/floot";
 
     constructor() ERC721("Floot", "FLOOT") Ownable() {}
+
+    function setContractURI(string memory newContractURI) external onlyOwner {
+        _contractURI = newContractURI;
+    }
+
+    function contractURI() external view returns (string memory) {
+        return _contractURI;
+    }
+
+    /**
+     * Override isApprovedForAll to whitelist user's OpenSea proxy accounts to enable gas-less listings.
+     */
+    function isApprovedForAll(address owner, address operator)
+        public
+        view
+        override(ERC721)
+        returns (bool)
+    {
+        ProxyRegistry proxyRegistry = ProxyRegistry(
+            0xF57B2c51dED3A29e6891aba85459d600256Cf317
+        ); // test net
+        // ProxyRegistry proxyRegistry = ProxyRegistry(
+        //     "0xa5409ec958C83C3f309868babACA7c86DCB077c1"
+        // ); // main net
+
+        // Whitelist OpenSea proxy contract for easy trading.
+        if (proxyRegistry.proxies(owner) == operator) {
+            return true;
+        }
+        return super.isApprovedForAll(owner, operator);
+    }
 
     function logx(uint256 x) public pure returns (uint256) {
         uint256 n = 0;
