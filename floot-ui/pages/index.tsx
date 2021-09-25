@@ -15,16 +15,14 @@ const Barcode = require('react-barcode');
 
 const Home: NextPage = () => {
   const Router = useRouter()
-  const [ NFTs, setNFT ] =  useState<FlootNFT[]>([])
+  const [NFTs, setNFT] = useState<FlootNFT[]>([])
   useEffect(() => {
     (async () => {
       const chain = 'rinkeby' // 'eth'
       const flootCollection = '0xe810F36Ba65aA2317E5dAF8c33BE726357E7B477' //'0x8D0a1Fd8DBa9fE55b63053DBE064C4497ffCa00B'
       const resp = await axios(`/api/fetch?address=${flootCollection}&chain=${chain}`)
-      if(resp.status == 200){
-        if(resp.data.result.length > 0){
-          console.log('11111')
-          console.log(resp.data.result)
+      if (resp.status == 200) {
+        if (resp.data.result.length > 0) {
           const lists: FlootNFT[] = resp.data.result
           setNFT(lists)
         }
@@ -51,7 +49,7 @@ const Home: NextPage = () => {
               <span className="text-4xl">Floot</span>
             </div>
             <div className="text-2xl mb-2">
-              <a className="p-4" href="https://twitter.com/flootcenter">
+              <a className="p-4" href="https://twitter.com/floot_center">
                 <img src="twitter_logo.png" style={{ height: '20px', width: '20px' }} className="inline-block" />
               </a>
               <a className="p-4" href="https://github.com/yoyoismee/provably-rare-floot">
@@ -80,10 +78,11 @@ const Home: NextPage = () => {
 
       <div className="w-screen flex flex-col items-center">
         <div className="md:w-3/5 w-5/6 ">
+
           <div className="w-full h-3 mt-2 bg-black mb-2"></div>
           <h3 className="text-2xl font-bold mb-5">Traits</h3>
           <div className="grid xl:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6">
-            { NFTs.map((nft,idx) => <Floot nft={nft} key={idx} />   ) }
+            {NFTs.map((nft, idx) => <Floot nft={nft} key={idx} />)}
             {/* { lists.map(({ price, howTo, ingredient, flootId }, index) => 
               <FlootCard 
                 key={index}
