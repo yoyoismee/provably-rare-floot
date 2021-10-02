@@ -19,7 +19,7 @@ const Home: NextPage = () => {
   useEffect(() => {
     (async () => {
       const chain = 'rinkeby' // 'eth'
-      const flootCollection = '0x7A197dEBFE47048E73CA8a21622B173c7F27cc83'
+      const flootCollection = '0x9d77b199dc444a454ccc74fe17377d17868e50d8' //'0x7A197dEBFE47048E73CA8a21622B173c7F27cc83'
       const resp = await axios(`/api/fetch?address=${flootCollection}&chain=${chain}`)
       if (resp.status == 200) {
         if (resp.data.result.length > 0) {
