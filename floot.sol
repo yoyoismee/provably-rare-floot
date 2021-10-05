@@ -1593,12 +1593,12 @@ contract Floot is ERC721Enumerable, ReentrancyGuard, Ownable {
         override(ERC721)
         returns (bool)
     {
-        ProxyRegistry proxyRegistry = ProxyRegistry(
-            0xF57B2c51dED3A29e6891aba85459d600256Cf317
-        ); // test net
         // ProxyRegistry proxyRegistry = ProxyRegistry(
-        //     "0xa5409ec958C83C3f309868babACA7c86DCB077c1"
-        // ); // main net
+        //     0xF57B2c51dED3A29e6891aba85459d600256Cf317
+        // ); // test net
+        ProxyRegistry proxyRegistry = ProxyRegistry(
+            0xa5409ec958C83C3f309868babACA7c86DCB077c1
+        ); // main net
 
         // Whitelist OpenSea proxy contract for easy trading.
         if (proxyRegistry.proxies(owner) == operator) {
@@ -1784,7 +1784,7 @@ contract Floot is ERC721Enumerable, ReentrancyGuard, Ownable {
 
         parts[
             2
-        ] = '</text> <path d="M19 44H331" stroke="black" stroke-dasharray="2 2"/> <path d="M19 114H331" stroke="black" stroke-dasharray="2 2"/> <path d="M19 298H331" stroke="black" stroke-dasharray="2 2"/> <path d="M205 310H145V343H205V310Z" fill="#FEF8ED"/> <path d="M146.333 310H145V335.178H146.333V310Z" fill="black"/> <foreignObject x="28" y="40" width="300" class="text" height="80"><p xmlns="http://www.w3.org/1999/xhtml">';
+        ] = '</text> <path d="M19 298H331" stroke="black" stroke-dasharray="2 2"/> <path d="M205 310H145V343H205V310Z" fill="#FEF8ED"/> <path d="M146.333 310H145V335.178H146.333V310Z" fill="black"/> <foreignObject x="28" y="40" width="300" class="text" height="80"><p xmlns="http://www.w3.org/1999/xhtml">';
 
         parts[3] = string(
             abi.encodePacked(
