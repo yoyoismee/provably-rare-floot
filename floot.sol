@@ -1593,12 +1593,12 @@ contract Floot is ERC721Enumerable, ReentrancyGuard, Ownable {
         override(ERC721)
         returns (bool)
     {
-        ProxyRegistry proxyRegistry = ProxyRegistry(
-            0xF57B2c51dED3A29e6891aba85459d600256Cf317
-        ); // test net
         // ProxyRegistry proxyRegistry = ProxyRegistry(
-        //     "0xa5409ec958C83C3f309868babACA7c86DCB077c1"
-        // ); // main net
+        //     0xF57B2c51dED3A29e6891aba85459d600256Cf317
+        // ); // test net
+        ProxyRegistry proxyRegistry = ProxyRegistry(
+            0xa5409ec958C83C3f309868babACA7c86DCB077c1
+        ); // main net
 
         // Whitelist OpenSea proxy contract for easy trading.
         if (proxyRegistry.proxies(owner) == operator) {
