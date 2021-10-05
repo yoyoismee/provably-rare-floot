@@ -71,6 +71,15 @@ const Home: NextPage = () => {
               <span className="mb-4">Floot is an open-source project, feel free to use Floot in more fancy ways.</span>
             </div>
           </div>
+          <span className="w-full h-3 bg-black mb-2"></span>
+          <div className="mb-2 text-xl">
+            <div className="text-2xl mb-2 font-bold">
+              Rarity
+            </div>
+            <div className="mb-4 text-xl">
+              <span className="mb-4">The higher ΞΔT the rarer.</span>
+            </div>
+          </div>
           <button className="mt-16 w-64 p-3 border-black m-auto inline border-4 text-xl font-bold hidden" onClick={() => Router.push('/traits')}>See Traits</button>
 
         </main>
@@ -82,7 +91,7 @@ const Home: NextPage = () => {
           <div className="w-full h-3 mt-2 bg-black mb-2"></div>
           <h3 className="text-2xl font-bold mb-5">Traits</h3>
           <div className="grid xl:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6">
-            {NFTs.sort((a,b) => parseInt(b.token_id) - parseInt(a.token_id) ).map((nft, idx) =>  nft.token_uri != undefined && <Floot nft={nft} key={idx} />)}
+            {NFTs.sort((a, b) => parseInt(b.token_id) - parseInt(a.token_id)).map((nft, idx) => nft.token_uri != undefined && <Floot nft={nft} key={idx} />)}
             {/* { lists.map(({ price, howTo, ingredient, flootId }, index) => 
               <FlootCard 
                 key={index}
